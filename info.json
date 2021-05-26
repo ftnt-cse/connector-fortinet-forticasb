@@ -1,0 +1,261 @@
+{
+    "name": "forticasb",
+    "version": "1.0.0",
+    "label": "Fortinet FortiCASB",
+    "description": "FortiCASB Top Cloud Access Security Broker designed to provide visibility, compliance, data security, and threat protection for cloud-based services being used by an organization",
+    "publisher": "Community",
+    "icon_small_name": "small_icon.png",
+    "icon_large_name": "large_icon.png",
+    "cs_approved": false,
+    "cs_compatible": true,
+    "category": "Investigation",
+    "help_online": "https://docs.fortinet.com/document/fortisoar/1.2.0/forticasb/66/forticasb-v1-0-0",
+    "ingestion_supported": true,
+    "ingestion_modes": [
+        "scheduled"
+    ],
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "server_url",
+                "description": "URL of the Fortinet FortiCASB API",
+                "value": "https://www.forticasb.com"
+            },
+            {
+                "title": "API Key",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "password",
+                "name": "api_key",
+                "description": "FortiCASB Credential, follow this link to generate it https://docs.fortinet.com/document/forticasb/21.1.0/online-help/585481/generate-credential "
+            },
+            {
+                "title": "Verify SSL",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "value": true,
+                "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "operation": "get_resource_map",
+            "title": "Get Resource Map",
+            "description": "Get the user and account basic information from FortiCASB",
+            "category": "investigation",
+            "annotation": "get_resource_map",
+            "output_schema": "",
+            "enabled": true,
+            "parameters": []
+        },
+        {
+            "operation": "get_business_unit_ids",
+            "title": "Get Business Units IDs",
+            "description": "List all available Business Units IDs, the ID is required for some actions",
+            "category": "investigation",
+            "annotation": "get_business_unit_ids",
+            "output_schema": "",
+            "enabled": true,
+            "parameters": []
+        },
+        {
+            "operation": "get_dashboard_risk",
+            "title": "Get Dashboard Risk",
+            "description": "Get all risk trend data of all monitoring accounts in the business unit",
+            "category": "investigation",
+            "annotation": "get_dashboard_risk",
+            "output_schema": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Business Unit ID",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "integer",
+                    "name": "business_unit_id",
+                    "tooltip": "",
+                    "value": 0,
+                    "description": "BU ID you want to get the dashboard usage for"
+                },
+                {
+                    "title": "Start Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "start_time",
+                    "tooltip": "Time of the oldest data you want to get"
+                },
+                {
+                    "title": "End Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "end_time",
+                    "tooltip": "Time of the most recent data you want to get"
+                }
+            ]
+        },
+        {
+            "operation": "get_dashboard_usage",
+            "title": "Get Dashboard Usage",
+            "description": "Get all activity usage trend data of all the monitoring cloud accounts in the business unit",
+            "category": "investigation",
+            "annotation": "get_dashboard_usage",
+            "output_schema": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Business Unit ID",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "integer",
+                    "name": "business_unit_id",
+                    "tooltip": "",
+                    "value": 0,
+                    "description": "BU ID you want to get the dashboard usage for"
+                },
+                {
+                    "title": "Start Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "start_time",
+                    "tooltip": "Time of the oldest data you want to get"
+                },
+                {
+                    "title": "End Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "end_time",
+                    "tooltip": "Time of the most recent data you want to get"
+                }
+            ]
+        },
+        {
+            "operation": "get_bu_services",
+            "title": "Get Business Unit Services",
+            "description": "Get a list of services for a business Unit",
+            "category": "investigation",
+            "annotation": "get_bu_services",
+            "output_schema": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Business Unit ID",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "integer",
+                    "name": "business_unit_id",
+                    "tooltip": "",
+                    "value": 0,
+                    "description": "BU ID you want to get the dashboard usage for"
+                },
+                {
+                    "title": "Start Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "start_time",
+                    "tooltip": "Time of the oldest data you want to get"
+                },
+                {
+                    "title": "End Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "end_time",
+                    "tooltip": "Time of the most recent data you want to get"
+                }
+            ]
+        },
+        {
+            "operation": "get_alert_list",
+            "title": "Get Alerts",
+            "description": "Get cloud service alerts",
+            "category": "investigation",
+            "annotation": "get_alert_list",
+            "output_schema": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Business Unit ID",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "integer",
+                    "name": "business_unit_id",
+                    "tooltip": "",
+                    "value": 0,
+                    "description": "BU ID you want to get the dashboard usage for"
+                },
+                {
+                    "title": "Service",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "service",
+                    "description": "Fetches alerts for a specific service like Dropbox,Egnyte..."
+                },
+                {
+                    "title": "Start Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "start_time",
+                    "tooltip": "Time of the oldest data you want to get"
+                },
+                {
+                    "title": "End Time",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "datetime",
+                    "name": "end_time",
+                    "tooltip": "Time of the most recent data you want to get"
+                },
+                {
+                    "title": "Records to Skip",
+                    "required": false,
+                    "editable": true,
+                    "visible": true,
+                    "type": "integer",
+                    "name": "skip",
+                    "tooltip": "Skip the first X records from results",
+                    "value": 0
+                },
+                {
+                    "title": "Limit Fetched Records To",
+                    "required": false,
+                    "editable": true,
+                    "visible": true,
+                    "type": "integer",
+                    "name": "limit",
+                    "tooltip": "Limit the number of returned records to X (Max is 1000)",
+                    "value": 50
+                }
+            ]
+        }
+    ]
+}
