@@ -6,7 +6,7 @@
     "publisher": "Community",
     "icon_small_name": "small_icon.png",
     "icon_large_name": "large_icon.png",
-    "cs_approved": false,
+    "cs_approved": true,
     "cs_compatible": true,
     "category": "Investigation",
     "help_online": "https://docs.fortinet.com/document/fortisoar/1.2.0/forticasb/66/forticasb-v1-0-0",
