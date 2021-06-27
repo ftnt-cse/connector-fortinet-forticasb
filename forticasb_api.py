@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 FortiCASB REST Client implementation
 """
@@ -7,7 +6,6 @@ import requests
 import logging
 import arrow
 import logging.handlers
-import socket
 from time import gmtime, strftime
 import jmespath
 from requests_toolbelt.utils import dump
@@ -112,7 +110,6 @@ class FortiCasbCS(object):
 
         except Exception:
             self.forticwp_logging.exception("Request Failed")
-            raise
 
     def get_resource_map(self):
         '''Get the user and account basic information from FortiCASB'''
@@ -158,17 +155,19 @@ class FortiCasbCS(object):
       
     def get_bu_services(self,business_unit_id,start_time,end_time):
         '''Get a list of services for a business Unit'''
-              
-        dashboard_usage = self.get_dashboard_usage(business_unit_id,start_time,end_time)
-        if dashboard_usage['Status'] == 'Success':
-            services = jmespath.search('data[].name', dashboard_usage['data'])
-            if len(services) > 0:
-                return {"data": services,'Status':'Success'}
+        try:      
+            dashboard_usage = self.get_dashboard_usage(business_unit_id,start_time,end_time)
+            if dashboard_usage['Status'] == 'Success':
+                services = jmespath.search('data[].name', dashboard_usage['data'])
+                if len(services) > 0:
+                    return {"data": services,'Status':'Success'}
+                else:
+                    return {"data": 'No services found','Status':'Failure'}
             else:
-                return {"data": 'No services found','Status':'Failure'}
-        else:
-            return dashboard_usage
-
+                return dashboard_usage
+        except Exception:
+            self.forticwp_logging.exception("Request Failed")
+            
     def get_alert_list(self,business_unit_id, service, start_time, end_time, skip=0, limit=50):
         '''Get cloud service account alert details.'''
 
