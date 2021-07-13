@@ -1,5 +1,5 @@
 {
-    "name": "forticasb",
+    "name": "fortinet-forticasb",
     "version": "1.0.0",
     "label": "Fortinet FortiCASB",
     "description": "FortiCASB Top Cloud Access Security Broker designed to provide visibility, compliance, data security, and threat protection for cloud-based services being used by an organization",
