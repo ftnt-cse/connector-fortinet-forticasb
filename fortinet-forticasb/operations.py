@@ -26,8 +26,8 @@ def FortiCASB_init(config):
         )
         return FortiCASB
     except Exception as e:
-        logger.exception("Failed to connect: {}".format(e))
-        raise ConnectorError("Failed to connect: {}".format(e))
+        logger.exception(e)
+        raise ConnectorError(e)
 
 def check_health(config):
     try:

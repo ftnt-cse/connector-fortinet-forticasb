@@ -74,12 +74,11 @@ class FortiCasbCS(object):
                 self.forticasb_logging.info('Authentication successful. it will be valid until: {}'.format(self.token_expires_at))
 
             else:
-                self.forticasb_logging.exception('Authentication Failed {}'.format(response.content))
-                raise
+                raise Exception('Failed Authentication')
 
-        except Exception:
-            self.forticasb_logging.exception("Authentication Failed")
-            raise
+        except Exception as e:
+            self.forticasb_logging.exception('Failed to open a session')
+            raise Exception('Failed to open a session: {}'.format(e))
 
 
     def make_rest_call(self, endpoint, params=None, data=None, method='GET',debug=True):
@@ -103,43 +102,70 @@ class FortiCasbCS(object):
             if debug:
                 self.forticasb_logging.debug('REQUESTS_DUMP:\n{}'.format(dump.dump_all(response).decode('utf-8')))
             if response.status_code in [200,201]:
-                return {'data':response.json(),'Status':'Success'}
+                return {'Status':'Success','data':response.json()}
             else:
-                self.forticasb_logging.exception({"data": response.content,'Status':'Failed with Status Code: '+str(response.status_code)})
-                return {"data": response.content,'Status':'Failed with Status Code: '+str(response.status_code)}
+                return_data = {
+                        'Status': 'Failure',
+                        'data': {
+                                'Server Response':response.content,
+                                'Status Code': str(response.status_code)
+                        }
+                }
+                self.forticasb_logging.exception(return_data)
+                return return_data
 
-        except Exception:
-            self.forticwp_logging.exception("Request Failed")
+        except Exception as e:
+            self.forticasb_logging.exception("Request Failed: {}".format(e))
+            raise Exception("Request Failed: {}".format(e))
 
     def get_resource_map(self):
         '''Get the user and account basic information from FortiCASB'''
-
-        return self.make_rest_call('/resourceURLMap')
+        try:
+            response = self.make_rest_call('/resourceURLMap')
+            if response['Status'] == 'Success':
+                return response
+            else:
+                raise Exception(response)
+        except Exception as e:
+            self.forticasb_logging.exception(e)
+            raise Exception(e)
 
     def get_business_unit_ids(self):
         '''List all available Business Units IDs'''
-
-        bu_list = []
-        resource_map = self.get_resource_map()
-        if resource_map['Status'] == 'Success':
-            for resource in resource_map['data']:
-                if len(resource['buMapSet']) > 0:
-                    bu_list += jmespath.search('buMapSet[].buId', resource)
-                    return list(dict.fromkeys(bu_list))
-        else:
-            return resource_map
+        try:
+            bu_list = []
+            resource_map = self.get_resource_map()
+            if resource_map['Status'] == 'Success':
+                for resource in resource_map['data']:
+                    if len(resource['buMapSet']) > 0:
+                        bu_list += jmespath.search('buMapSet[].buId', resource)
+                        return list(dict.fromkeys(bu_list))
+            else:
+                raise Exception(resource_map)
     
+        except Exception as e:
+            self.forticasb_logging.exception(e)
+            raise Exception(e)
 
     def _get_dashboard(self,business_unit_id,start_time,end_time,dashboard):
         ''' Get Dashboard'''
+        try:
+            payload = {"startTime":start_time,"endTime":end_time}
+            self.headers.update({'buId':str(business_unit_id)})
+            self.headers.update({'timeZone':strftime("%z", gmtime())})
+            response = self.make_rest_call('/dashboard/'+dashboard,
+                                      method='POST',
+                                      data=payload
+                                      )
+            if response['Status'] == 'Success':
+                return response
+            else:
+                raise Exception(response)
 
-        payload = {"startTime":start_time,"endTime":end_time}
-        self.headers.update({'buId':str(business_unit_id)})
-        self.headers.update({'timeZone':strftime("%z", gmtime())})
-        return self.make_rest_call('/dashboard/'+dashboard,
-                                  method='POST',
-                                  data=payload
-                                  )
+        except Exception as e:
+            self.forticasb_logging.exception(e)
+            raise Exception(e)
+
 
     def get_dashboard_risk(self,business_unit_id,start_time,end_time):
         '''Get all risk trend data of all monitoring accounts in the business unit'''
@@ -165,24 +191,32 @@ class FortiCasbCS(object):
                     return {"data": 'No services found','Status':'Failure'}
             else:
                 return dashboard_usage
-        except Exception:
-            self.forticwp_logging.exception("Request Failed")
+        except Exception as e:
+            self.forticasb_logging.exception(e)
             
     def get_alert_list(self,business_unit_id, service, start_time, end_time, skip=0, limit=50):
         '''Get cloud service account alert details.'''
+        try:
+            self.headers.update({'buId':str(business_unit_id)})
+            self.headers.update({'service':service})
 
-        self.headers.update({'buId':str(business_unit_id)})
-        self.headers.update({'service':service})
-        
-        payload = {
-            'service':service,
-            'startTime':start_time,
-            'endTime':end_time,
-            'skip':skip,
-            'limit':limit
-        }
-        return self.make_rest_call('/alert/list',
-                                  method='POST',
-                                  data=payload,
-                                  debug=True
-                                  )
+            payload = {
+                'service':service,
+                'startTime':start_time,
+                'endTime':end_time,
+                'skip':skip,
+                'limit':limit
+            }
+            response = self.make_rest_call('/alert/list',
+                                      method='POST',
+                                      data=payload,
+                                      debug=True
+                                      )
+            if response['Status'] == 'Success':
+                return response
+            else:
+                raise Exception(response)
+
+        except Exception as e:
+            self.forticasb_logging.exception(e)
+            raise Exception(e)
