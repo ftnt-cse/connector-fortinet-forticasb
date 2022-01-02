@@ -6,13 +6,13 @@
       "name": "Sample - Fortinet FortiCASB - 1.0.0",
       "description": "Sample playbooks for \"Fortinet FortiCASB\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": "/api/3/images/2480a19b-00ac-42f1-ae58-82dc35a4b984",
+      "image": "/api/3/images/bf5ff56f-a32e-46dc-bb7d-6f191b7ed35b",
       "uuid": "ffe942eb-62b2-4b65-a405-b370853e21c8",
-      "id": 124,
+      "id": 251,
       "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-      "createDate": 1621784797,
+      "createDate": 1641111416,
       "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-      "modifyDate": 1621784797,
+      "modifyDate": 1641111416,
       "recordTags": [],
       "workflows": [
         {
@@ -23,11 +23,12 @@
           "tag": null,
           "description": null,
           "isActive": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1621783569,
+          "lastModifyDate": 1641113472,
           "collection": "/api/3/workflow_collections/ffe942eb-62b2-4b65-a405-b370853e21c8",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/12133280-2bb4-497a-a710-9289b5f4c7a8",
@@ -65,43 +66,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "uuid": "12133280-2bb4-497a-a710-9289b5f4c7a8",
-              "id": 6555
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Resource Map",
-              "description": null,
-              "arguments": {
-                "name": "Fortinet FortiCASB",
-                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
-                "params": [],
-                "version": "1.0.0",
-                "connector": "forticasb",
-                "operation": "get_business_unit_ids",
-                "operationTitle": "Get Business Units IDs",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "947c6ae6-3e48-43e7-8391-4283cbfea401",
-              "id": 6556
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Results",
-              "description": null,
-              "arguments": {
-                "results": "{{vars.steps.Get_Dashboard_Risk}}"
-              },
-              "status": null,
-              "top": "436",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "uuid": "8d6ee4c5-74bf-4e7e-bad2-40c65c5ecd96",
-              "id": 6557
+              "id": 14386
             },
             {
               "@type": "WorkflowStep",
@@ -127,7 +92,43 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "uuid": "4a1a70b6-8f6c-406d-8b05-c41ec258cb12",
-              "id": 6558
+              "id": 14389
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Results",
+              "description": null,
+              "arguments": {
+                "results": "{{vars.steps.Get_Dashboard_Risk}}"
+              },
+              "status": null,
+              "top": "436",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "uuid": "8d6ee4c5-74bf-4e7e-bad2-40c65c5ecd96",
+              "id": 14388
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Resource Map",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB",
+                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "forticasb",
+                "operation": "get_business_unit_ids",
+                "operationTitle": "Get Business Units IDs",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "947c6ae6-3e48-43e7-8391-4283cbfea401",
+              "id": 14387
             }
           ],
           "routes": [
@@ -161,12 +162,14 @@
           ],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "27b5c885-6c7b-41b6-aabf-c8e67ef381ef",
-          "recordTags": [],
-          "id": 1408,
+          "recordTags": [
+            "fortinet-forticasb"
+          ],
+          "id": 2698,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1621784797,
-          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "modifyDate": 1621784797,
+          "createDate": 1641111416,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1641113472,
           "owners": [],
           "isPrivate": false
         },
@@ -178,11 +181,12 @@
           "tag": null,
           "description": null,
           "isActive": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1621782564,
+          "lastModifyDate": 1641113459,
           "collection": "/api/3/workflow_collections/ffe942eb-62b2-4b65-a405-b370853e21c8",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/23b80023-0b37-4a55-929b-2e9fa1844c9a",
@@ -220,7 +224,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "uuid": "23b80023-0b37-4a55-929b-2e9fa1844c9a",
-              "id": 6559
+              "id": 14390
             },
             {
               "@type": "WorkflowStep",
@@ -242,7 +246,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "uuid": "2d7d42c9-f8b1-4c9d-8466-fb16c57607e8",
-              "id": 6560
+              "id": 14391
             },
             {
               "@type": "WorkflowStep",
@@ -256,7 +260,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
               "uuid": "66643dcd-2dc0-4633-a602-a4ad2074158e",
-              "id": 6561
+              "id": 14392
             }
           ],
           "routes": [
@@ -281,12 +285,14 @@
           ],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "35871eac-36ad-46f1-beb3-23c285bf84f0",
-          "recordTags": [],
-          "id": 1409,
+          "recordTags": [
+            "fortinet-forticasb"
+          ],
+          "id": 2699,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1621784797,
-          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "modifyDate": 1621784797,
+          "createDate": 1641111416,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1641113459,
           "owners": [],
           "isPrivate": false
         },
@@ -298,11 +304,12 @@
           "tag": null,
           "description": null,
           "isActive": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1621785726,
+          "lastModifyDate": 1641113429,
           "collection": "/api/3/workflow_collections/ffe942eb-62b2-4b65-a405-b370853e21c8",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/50313a79-55b2-4a1a-860d-49c0094b4d5f",
@@ -340,29 +347,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "uuid": "50313a79-55b2-4a1a-860d-49c0094b4d5f",
-              "id": 6573
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Resource Map",
-              "description": null,
-              "arguments": {
-                "name": "Fortinet FortiCASB",
-                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
-                "params": [],
-                "version": "1.0.0",
-                "connector": "forticasb",
-                "operation": "get_business_unit_ids",
-                "operationTitle": "Get Business Units IDs",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "e0fe6962-35f4-49f6-987b-01783febc811",
-              "id": 6574
+              "id": 14393
             },
             {
               "@type": "WorkflowStep",
@@ -376,7 +361,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
               "uuid": "51600c41-8d0f-4796-8a96-dbf2ca468701",
-              "id": 6575
+              "id": 14395
             },
             {
               "@type": "WorkflowStep",
@@ -402,7 +387,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "uuid": "5675df58-4889-42fd-b4de-849f7615eed9",
-              "id": 6576
+              "id": 14396
             },
             {
               "@type": "WorkflowStep",
@@ -431,7 +416,29 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "uuid": "dd094fe3-8fc0-4362-b5fc-d8dacb462cde",
-              "id": 6577
+              "id": 14397
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Resource Map",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB",
+                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "forticasb",
+                "operation": "get_business_unit_ids",
+                "operationTitle": "Get Business Units IDs",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "e0fe6962-35f4-49f6-987b-01783febc811",
+              "id": 14394
             }
           ],
           "routes": [
@@ -474,12 +481,14 @@
           ],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "8f3af7e9-5136-4781-a00d-7a98a19cf349",
-          "recordTags": [],
-          "id": 1413,
-          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "createDate": 1621785102,
+          "recordTags": [
+            "fortinet-forticasb"
+          ],
+          "id": 2700,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1641111416,
           "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1621785727,
+          "modifyDate": 1641113429,
           "owners": [],
           "isPrivate": false
         },
@@ -491,15 +500,38 @@
           "tag": null,
           "description": null,
           "isActive": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1621785039,
+          "lastModifyDate": 1641113442,
           "collection": "/api/3/workflow_collections/ffe942eb-62b2-4b65-a405-b370853e21c8",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/2ec114d6-928d-48e9-8b6d-88bae74511a0",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Resource Map",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB",
+                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "forticasb",
+                "operation": "get_business_unit_ids",
+                "operationTitle": "Get Business Units IDs",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "27c2e3f5-1b70-4220-b0d6-64cdf48e7297",
+              "id": 14399
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -533,29 +565,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "uuid": "2ec114d6-928d-48e9-8b6d-88bae74511a0",
-              "id": 6562
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Resource Map",
-              "description": null,
-              "arguments": {
-                "name": "Fortinet FortiCASB",
-                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
-                "params": [],
-                "version": "1.0.0",
-                "connector": "forticasb",
-                "operation": "get_business_unit_ids",
-                "operationTitle": "Get Business Units IDs",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "27c2e3f5-1b70-4220-b0d6-64cdf48e7297",
-              "id": 6563
+              "id": 14398
             },
             {
               "@type": "WorkflowStep",
@@ -569,7 +579,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
               "uuid": "604e4d6a-7bf6-4cc3-9c20-f5e7ce8f79c3",
-              "id": 6564
+              "id": 14400
             },
             {
               "@type": "WorkflowStep",
@@ -595,7 +605,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "uuid": "9dc2696a-5625-4402-9ba7-5ce621f72375",
-              "id": 6565
+              "id": 14401
             }
           ],
           "routes": [
@@ -629,12 +639,14 @@
           ],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "975a3388-4a75-4863-b81e-98b74430fbf6",
-          "recordTags": [],
-          "id": 1410,
+          "recordTags": [
+            "fortinet-forticasb"
+          ],
+          "id": 2701,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1621784797,
+          "createDate": 1641111416,
           "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1621785040,
+          "modifyDate": 1641113442,
           "owners": [],
           "isPrivate": false
         },
@@ -646,15 +658,78 @@
           "tag": null,
           "description": null,
           "isActive": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1621783753,
+          "lastModifyDate": 1641113487,
           "collection": "/api/3/workflow_collections/ffe942eb-62b2-4b65-a405-b370853e21c8",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/dbf57889-1e83-4a7a-ba22-6cee1af64999",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Dashboard Risk",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB",
+                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
+                "params": {
+                  "end_time": "{{arrow.utcnow()}}",
+                  "start_time": "{{arrow.utcnow().shift(hours=-24)}}",
+                  "business_unit_id": "{{vars.steps.Get_Resource_Map.data.0}}"
+                },
+                "version": "1.0.0",
+                "connector": "forticasb",
+                "operation": "get_dashboard_usage",
+                "operationTitle": "Get Dashboard Usage",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "07626c2c-7aaf-41e0-89bc-35c989f8776c",
+              "id": 14405
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Resource Map",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB",
+                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "forticasb",
+                "operation": "get_business_unit_ids",
+                "operationTitle": "Get Business Units IDs",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "2f536126-0e82-429b-922a-10d4ba29bd92",
+              "id": 14403
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Results",
+              "description": null,
+              "arguments": {
+                "results": "{{vars.steps.Get_Dashboard_Risk}}"
+              },
+              "status": null,
+              "top": "436",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "uuid": "7240007f-e5d3-4b1e-bf26-435e6184df71",
+              "id": 14404
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -688,69 +763,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "uuid": "dbf57889-1e83-4a7a-ba22-6cee1af64999",
-              "id": 6566
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Resource Map",
-              "description": null,
-              "arguments": {
-                "name": "Fortinet FortiCASB",
-                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
-                "params": [],
-                "version": "1.0.0",
-                "connector": "forticasb",
-                "operation": "get_business_unit_ids",
-                "operationTitle": "Get Business Units IDs",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "2f536126-0e82-429b-922a-10d4ba29bd92",
-              "id": 6567
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Results",
-              "description": null,
-              "arguments": {
-                "results": "{{vars.steps.Get_Dashboard_Risk}}"
-              },
-              "status": null,
-              "top": "436",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "uuid": "7240007f-e5d3-4b1e-bf26-435e6184df71",
-              "id": 6568
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Dashboard Risk",
-              "description": null,
-              "arguments": {
-                "name": "Fortinet FortiCASB",
-                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
-                "params": {
-                  "end_time": "{{arrow.utcnow()}}",
-                  "start_time": "{{arrow.utcnow().shift(hours=-24)}}",
-                  "business_unit_id": "{{vars.steps.Get_Resource_Map.data.0}}"
-                },
-                "version": "1.0.0",
-                "connector": "forticasb",
-                "operation": "get_dashboard_usage",
-                "operationTitle": "Get Dashboard Usage",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "300",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "07626c2c-7aaf-41e0-89bc-35c989f8776c",
-              "id": 6569
+              "id": 14402
             }
           ],
           "routes": [
@@ -784,12 +797,14 @@
           ],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "d2ff3ae4-3951-46d8-8ffc-3e1b7fe1527c",
-          "recordTags": [],
-          "id": 1411,
+          "recordTags": [
+            "fortinet-forticasb"
+          ],
+          "id": 2702,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1621784797,
-          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "modifyDate": 1621784797,
+          "createDate": 1641111416,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1641113487,
           "owners": [],
           "isPrivate": false
         },
@@ -801,15 +816,52 @@
           "tag": null,
           "description": null,
           "isActive": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1621782510,
+          "lastModifyDate": 1641113499,
           "collection": "/api/3/workflow_collections/ffe942eb-62b2-4b65-a405-b370853e21c8",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/fe4f6b34-074e-457d-9db0-3147e638fc49",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Resource Map",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB",
+                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "forticasb",
+                "operation": "get_resource_map",
+                "operationTitle": "Get Resource Map",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "6ea4c323-9022-487d-9931-8b92a44f213d",
+              "id": 14407
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Results",
+              "description": null,
+              "arguments": {
+                "results": "{{vars.steps.Get_Resource_Map}}"
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "uuid": "955229df-f995-4c59-8a3e-068387d98019",
+              "id": 14408
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -843,43 +895,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "uuid": "fe4f6b34-074e-457d-9db0-3147e638fc49",
-              "id": 6570
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Resource Map",
-              "description": null,
-              "arguments": {
-                "name": "Fortinet FortiCASB",
-                "config": "ed616366-ad3d-46d5-92a4-c89a1dd4cb40",
-                "params": [],
-                "version": "1.0.0",
-                "connector": "forticasb",
-                "operation": "get_resource_map",
-                "operationTitle": "Get Resource Map",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "6ea4c323-9022-487d-9931-8b92a44f213d",
-              "id": 6571
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Results",
-              "description": null,
-              "arguments": {
-                "results": "{{vars.steps.Get_Resource_Map}}"
-              },
-              "status": null,
-              "top": "300",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "uuid": "955229df-f995-4c59-8a3e-068387d98019",
-              "id": 6572
+              "id": 14406
             }
           ],
           "routes": [
@@ -904,17 +920,21 @@
           ],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "ff870506-b098-48b1-ad02-a40492a9724a",
-          "recordTags": [],
-          "id": 1412,
+          "recordTags": [
+            "fortinet-forticasb"
+          ],
+          "id": 2703,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1621784797,
-          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "modifyDate": 1621784797,
+          "createDate": 1641111416,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1641113499,
           "owners": [],
           "isPrivate": false
         }
       ]
     }
   ],
-  "exported_tags": []
+  "exported_tags": [
+    "fortinet-forticasb"
+  ]
 }

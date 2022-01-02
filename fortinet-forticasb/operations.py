@@ -37,7 +37,8 @@ def check_health(config):
       if response['Status'] == 'Success':
           return True
       else:
-          return False
+          logger.exception('{0}'.format(response))
+          raise ConnectorError('{0}'.format(response))
 
     except Exception as err:
         logger.exception('{0}'.format(err))
